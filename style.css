@@ -1,0 +1,660 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: all 0.5s ease-in-out;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar {
+  width: 4rem;
+  height: 100%;
+  background-color: #f0f4f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menuIcons {
+  height: 35%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.newChat {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.newChat:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.newChat p {
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+.menuIcons span {
+  font-size: 1.7rem;
+}
+
+.settingsIcons {
+  height: 35%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.mainContainer {
+  height: 100%;
+  width: calc(100% - 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+}
+
+nav h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: 1rem;
+  font-weight: normal;
+  z-index: 1060;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  transition: all 0.3s linear;
+}
+
+nav ul li {
+  list-style: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.newChatList {
+  display: none;
+}
+
+nav ul li:hover {
+  cursor: pointer;
+}
+
+.menuicon {
+  display: none;
+  z-index: 1060;
+}
+
+.menuicon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: #111;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.moon {
+  color: #f1c40f;
+  font-size: 1rem;
+}
+
+.sun {
+  color: #f39c12;
+  font-size: 1rem;
+}
+
+.checkbox-label .ball {
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(24px);
+}
+
+.userName {
+  height: 30%;
+  width: 70%;
+  max-width: 1500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userName h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  background-clip: text;
+  background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.userName h3 {
+  font-size: 3.2rem;
+  color: #c4c7c5;
+  font-weight: 500;
+}
+
+.promptcards {
+  height: 40%;
+  max-width: 1500px;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.promptcards::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  height: 75%;
+  min-width: 13rem;
+  width: 13rem;
+  background-color: #f0f4f9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.card:hover {
+  background-color: #e4e4e4;
+  cursor: pointer;
+}
+
+.card span {
+  align-self: flex-end;
+  padding: 5% 5%;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.chatList {
+  width: 60%;
+  max-width: 1100px;
+  overflow-y: auto;
+  margin: 2rem auto 6rem auto;
+  /* display: flex; */
+  flex-direction: column;
+  padding-bottom: 7rem;
+  word-break: break-all;
+  display: none;
+}
+
+.chatList::-webkit-scrollbar {
+  display: none;
+}
+
+.chatList .incomingText,
+.chatList .outgoingText {
+  color: black;
+  text-align: left;
+  padding-left: 1.1rem;
+  font-size: 1.09rem;
+}
+
+.outgoing {
+  display: flex;
+  padding: 0.8rem 0.8rem;
+}
+
+.incoming {
+  display: flex;
+  padding: 0.8rem 0.8rem;
+  flex-direction: column;
+}
+
+.textSpan {
+  display: flex;
+}
+
+.incoming .icons {
+  display: flex;
+  gap: 1.1rem;
+  padding-left: 3.5rem;
+  padding-top: 0.9rem;
+}
+
+img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.input {
+  height: 20%;
+  width: 70%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 10px;
+}
+
+.loading {
+  display: flex;
+  width: 100%;
+  padding: 0.8rem 0.8rem;
+}
+
+.loaders {
+  width: 100%;
+  padding-right: 2rem;
+}
+
+.loader {
+  height: 11px;
+  width: 100%;
+  background: linear-gradient(to right, #4285f4, rgb(23, 22, 22), #4285f4);
+  margin: 0.5rem 0.8rem;
+  animation: animate 3s linear infinite;
+  border-radius: 0.14rem;
+}
+
+.loader:last-child {
+  width: 70%;
+}
+
+.Loaderimg {
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
+
+.prompt {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Userinput {
+  height: 60%;
+  width: 90%;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  padding: 0 1.3rem;
+  font-size: 1.1rem;
+  background-color: #f0f4f9;
+  color: #111;
+}
+
+.input .prompt span {
+  font-size: 2.2rem;
+  display: none;
+}
+
+.input .prompt span:hover {
+  cursor: pointer;
+}
+
+.input p {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.chatContainer {
+  height: 100%;
+  width: 70%;
+  background-color: antiquewhite;
+}
+
+.userQuestion {
+  background-color: aquamarine;
+}
+
+.answer {
+  background-color: burlywood;
+}
+
+body.darkmode {
+  background-color: #131314;
+}
+
+body.darkmode .card,
+body.darkmode .Userinput,
+body.darkmode ul li {
+  background-color: #1e1f20;
+  color: white;
+}
+
+body.darkmode .sidebar {
+  background-color: #1e1f20;
+  color: #e8eaed;
+}
+
+body.darkmode .card:hover {
+  background-color: #3d3e3d;
+}
+
+body.darkmode .userName h3 {
+  color: #444746;
+}
+
+body.darkmode .card span {
+  color: white;
+  background-color: black;
+}
+
+body.darkmode .checkbox-label {
+  background-color: white;
+}
+body.darkmode .checkbox-label .ball {
+  background-color: black;
+}
+
+body.darkmode .prompt span,
+body.darkmode .input p,
+body.darkmode nav h2,
+body.darkmode .icon,
+body.darkmode .chatList .message p,
+body.darkmode #new-Chat,
+body.darkmode .menuicon {
+  color: white;
+}
+
+body.darkmode .userName h3 {
+  color: #444746;
+}
+
+@media screen and (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+
+  .mainContainer {
+    width: 100%;
+  }
+
+  ul {
+    height: 100%;
+    width: 20rem;
+    position: absolute;
+    background-color: #f0f4f9;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 2.7rem;
+    z-index: 1;
+  }
+
+  nav ul {
+    gap: 3rem;
+  }
+
+  ul li {
+    align-self: flex-start;
+  }
+
+  .newChatList {
+    display: flex;
+    align-items: center;
+  }
+
+  #new-Chat {
+    font-size: 2rem;
+    color: black;
+  }
+
+  .menuicon {
+    display: block;
+  }
+
+  .active {
+    transform: translateX(-100%);
+  }
+
+  .userName {
+    width: 95%;
+  }
+
+  .promptcards {
+    width: 95%;
+    gap: 0.5rem;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  body.darkmode ul {
+    background-color: #1e1f20;
+  }
+  body.darkmode ul .menuicon {
+    color: white;
+  }
+
+  .chatList {
+    width: 90%;
+    margin: 2rem 0 5rem 0;
+  }
+
+  .outgoing,
+  .incoming {
+    flex-direction: column;
+    margin-bottom: 0.9rem;
+    padding: 0;
+  }
+
+  .textSpan {
+    flex-direction: column;
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+    margin-bottom: 7px;
+  }
+
+  .chatList .message p {
+    padding-left: 0;
+  }
+
+  .incoming .icons {
+    padding-left: 0;
+  }
+
+  .loading {
+    padding: 0;
+    flex-direction: column;
+  }
+
+  .loader {
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  ul {
+    width: 100%;
+    padding: 6rem 1rem;
+  }
+
+  nav {
+    padding: 1rem;
+  }
+
+  .userName {
+    height: 35%;
+  }
+
+  .userName h2 {
+    font-size: 3rem;
+  }
+
+  .userName h3 {
+    font-size: 2.5rem;
+  }
+
+  .promptcards {
+    height: 35%;
+  }
+
+  .card {
+    height: 65%;
+    width: 10rem;
+  }
+
+  .chatList {
+    margin: 2.5rem auto 6rem auto;
+  }
+
+  img {
+    height: 25px;
+    width: 25px;
+  }
+
+  .chatList .incoming p,
+  .chatList .outgoing p {
+    font-size: 1.3rem;
+  }
+
+  .loaders {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .userName h2 {
+    font-size: 2.4rem;
+    font-weight: 550;
+  }
+
+  .userName h3 {
+    font-weight: 500;
+    font-size: 2rem;
+  }
+
+  .input p {
+    font-size: 0.6rem;
+  }
+
+  .prompt {
+    width: 100%;
+    height: 65%;
+  }
+
+  .chatList {
+    margin-top: 0.7rem;
+  }
+
+  .chatList .outgoing p,
+  .chatList .incoming p {
+    font-size: 0.99rem;
+  }
+
+  .outgoing {
+    margin-top: 1rem;
+  }
+
+  .incoming .icons {
+    margin-top: 0.3rem;
+    gap: 0.6rem;
+  }
+
+  .incoming .icons span {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .prompt {
+    height: 13rem;
+  }
+  .card{
+    height: 60%;
+    width: 25%;
+  }
+}
